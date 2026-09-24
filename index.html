@@ -1,113 +1,626 @@
-<html>
+
+<html lang="en">
 <head>
-    <title>My Barça Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyBarca | Més que un club</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0b20;
-            color: white;
-            text-align: center;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-        header {
-            background: linear-gradient(135deg, #004d98, #a50044);
-            padding: 35px 15px;
-        }
+body{
+    font-family:Arial, sans-serif;
+    background:#070714;
+    color:white;
+    overflow-x:hidden;
+}
 
-        header h1 {
-            font-size: 42px;
-            margin: 10px 0;
-        }
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,5,18,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #333;
+}
 
-        header p {
-            font-size: 18px;
-        }
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#ffcc00;
+}
 
-        .container {
-            padding: 25px;
-        }
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
 
-        .card {
-            background: #171735;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 400px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-        }
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
 
-        .card img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 15px;
-        }
+nav a:hover{
+    color:#ffcc00;
+}
 
-        .card h2 {
-            color: #ffcc00;
-        }
+.hero{
+    min-height:100vh;
+    padding:120px 20px 60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at 20% 20%,#004d98,transparent 35%),
+    radial-gradient(circle at 80% 80%,#a50044,transparent 35%),
+    #070714;
+}
 
-        button {
-            background: #a50044;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.hero h1{
+    font-size:clamp(50px,11vw,95px);
+    font-weight:900;
+    background:linear-gradient(90deg,#00aaff,#fff,#ff0055);
+    -webkit-background-clip:text;
+    color:transparent;
+}
 
-        button:hover {
-            background: #004d98;
-        }
+.hero p{
+    margin:25px 0;
+    font-size:19px;
+    color:#ddd;
+}
 
-        footer {
-            background: #050510;
-            padding: 20px;
-            margin-top: 30px;
-        }
-    </style>
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:30px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    background:linear-gradient(90deg,#004d98,#a50044);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:85px 20px;
+}
+
+.title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:40px;
+}
+
+.title span{
+    color:#ffcc00;
+}
+
+.about{
+    background:linear-gradient(145deg,#11112d,#19193d);
+    padding:35px;
+    border-radius:25px;
+    line-height:1.8;
+    color:#ddd;
+    box-shadow:0 10px 35px #0008;
+}
+
+.about p{
+    margin-bottom:18px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#11112c;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid #292943;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#ffcc00;
+    box-shadow:0 15px 35px #a5004440;
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card h3{
+    color:#ffcc00;
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#bbb;
+    line-height:1.6;
+}
+
+.history{
+    background:linear-gradient(145deg,#10102a,#191939);
+    border-radius:25px;
+    padding:35px;
+    line-height:1.8;
+}
+
+.timeline{
+    border-left:3px solid #a50044;
+    padding-left:25px;
+}
+
+.timeline-item{
+    margin-bottom:30px;
+}
+
+.timeline-item h3{
+    color:#ffcc00;
+    margin-bottom:8px;
+}
+
+.jersey{
+    text-align:center;
+}
+
+.jersey img{
+    width:100%;
+    max-width:450px;
+    height:430px;
+    object-fit:cover;
+    border-radius:25px;
+    box-shadow:0 15px 40px #000;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:#12122e;
+    text-align:center;
+    padding:30px 15px;
+    border-radius:20px;
+}
+
+.stat h3{
+    font-size:38px;
+    color:#ffcc00;
+}
+
+.stat p{
+    margin-top:8px;
+    color:#aaa;
+}
+
+.quote{
+    text-align:center;
+    padding:60px 20px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#004d98,#a50044);
+}
+
+.quote h2{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+button{
+    margin-top:25px;
+    padding:14px 28px;
+    border:0;
+    border-radius:30px;
+    background:#ffcc00;
+    font-weight:bold;
+    font-size:16px;
+}
+
+footer{
+    background:#03030b;
+    text-align:center;
+    padding:35px 20px;
+    color:#999;
+}
+
+footer strong{
+    color:#ffcc00;
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:12px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    nav ul{
+        gap:9px;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+    section{
+        padding:65px 15px;
+    }
+
+    .title{
+        font-size:30px;
+    }
+
+    .about,
+    .history{
+        padding:23px;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>🔵🔴 VISCA BARÇA 🔴🔵</h1>
-        <p>Welcome to my Barcelona website</p>
-    </header>
+<nav>
+    <div class="logo">🔵🔴 MyBarca</div>
 
-    <div class="container">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#players">Players</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#jersey">Jersey</a></li>
+    </ul>
+</nav>
 
+
+<!-- HERO -->
+<div class="hero" id="home">
+    <div>
+        <h1>VISCA BARÇA</h1>
+
+        <p>
+            Més que un club. A history, a culture and a passion. 🔵🔴
+        </p>
+
+        <a href="#players" class="btn">
+            Explore MyBarca →
+        </a>
+    </div>
+</div>
+
+
+<!-- ABOUT -->
+<section>
+
+    <h2 class="title">
+        About <span>Barcelona</span>
+    </h2>
+
+    <div class="about">
+
+        <p>
+            FC Barcelona was founded in 1899 by Joan Gamper and has grown
+            into one of football's most recognised clubs. The club is
+            traditionally associated with the colours blaugrana and the
+            motto "Més que un club" — "More than a club".
+        </p>
+
+        <p>
+            Barça has developed a distinctive football identity and is
+            also known for La Masia, its youth academy. Over the decades,
+            generations of players have shaped the club's history.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PLAYERS -->
+<section id="players">
+
+    <h2 class="title">
+        Barça <span>Stars</span> ⭐
+    </h2>
+
+    <div class="grid">
+
+        <!-- MESSI -->
         <div class="card">
-            <h2>FC Barcelona</h2>
+            <img src="messi.jpg" alt="Lionel Messi">
 
-            <img src="image_750x_66997c1df323c.png" width="300">
+            <div class="card-content">
+                <h3>🇦🇷 Lionel Messi</h3>
 
-            <p>
-                More than a club ❤️💙
-            </p>
-
-            <button onclick="alert('Visca Barça! 🔵🔴')">
-                Click Me
-            </button>
+                <p>
+                    Barcelona legend who spent the majority of his career
+                    at the club and became its record goalscorer.
+                </p>
+            </div>
         </div>
 
+
+        <!-- YAMAL -->
         <div class="card">
-            <h2>My Favourite Player</h2>
+            <img src="yamal.jpg" alt="Lamine Yamal">
 
-            <img src="LeoMessi20092010_pic_fcb-arsenal62.jpg" width="300">
+            <div class="card-content">
+                <h3>🇪🇸 Lamine Yamal</h3>
 
-            <p>
-                Lionel Messi 🐐
-            </p>
+                <p>
+                    A La Masia graduate who emerged as one of Barça's
+                    young attacking talents.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- FLICK -->
+        <div class="card">
+            <img src="flick.jpg" alt="Hansi Flick">
+
+            <div class="card-content">
+                <h3>🧠 Hansi Flick</h3>
+
+                <p>
+                    German coach who became Barcelona's first-team
+                    manager in 2024.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- RAPHINHA -->
+        <div class="card">
+            <img src="raphinha.jpg" alt="Raphinha">
+
+            <div class="card-content">
+                <h3>🇧🇷 Raphinha</h3>
+
+                <p>
+                    Brazilian forward known for his pace, creativity
+                    and attacking contribution.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- RODRI -->
+        <div class="card">
+            <img src="rodri.jpg" alt="Rodri">
+
+            <div class="card-content">
+                <h3>🇪🇸 Rodri</h3>
+
+                <p>
+                    Spanish midfielder known for his passing, positioning
+                    and control in midfield.
+                </p>
+            </div>
         </div>
 
     </div>
 
-    <footer>
-        <p>Made by Me ❤️💙</p>
-    </footer>
+</section>
+
+
+<!-- HISTORY -->
+<section id="history">
+
+    <h2 class="title">
+        Barça <span>History</span> 📜
+    </h2>
+
+    <div class="history">
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <h3>1899 — Foundation</h3>
+
+                <p>
+                    FC Barcelona was founded in 1899, with Joan Gamper
+                    playing a major role in the club's early development.
+                </p>
+            </div>
+
+
+            <div class="timeline-item">
+                <h3>1919–1930 — A Golden Age</h3>
+
+                <p>
+                    During this period Barça grew significantly and
+                    began collecting major honours while establishing
+                    itself as an important football institution.
+                </p>
+            </div>
+
+
+            <div class="timeline-item">
+                <h3>1950–1961 — The Kubala Era</h3>
+
+                <p>
+                    The era of Ladislao Kubala brought major attention
+                    to the club. Camp Nou opened in 1957.
+                </p>
+            </div>
+
+
+            <div class="timeline-item">
+                <h3>1988–1996 — The Dream Team</h3>
+
+                <p>
+                    Under Johan Cruyff, Barça developed the famous
+                    Dream Team and won its first European Cup in 1992.
+                </p>
+            </div>
+
+
+            <div class="timeline-item">
+                <h3>2008–2020 — A Historic Era</h3>
+
+                <p>
+                    Barcelona enjoyed one of the most successful periods
+                    in its history, with a distinctive possession-based
+                    style and several major international trophies.
+                </p>
+            </div>
+
+
+            <div class="timeline-item">
+                <h3>2021–Present — A New Horizon</h3>
+
+                <p>
+                    A new generation of players has continued the club's
+                    story, with young talents from La Masia becoming an
+                    important part of Barça's identity.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JERSEY -->
+<section id="jersey">
+
+    <h2 class="title">
+        Barça <span>Jersey</span> 👕
+    </h2>
+
+    <div class="jersey">
+
+        <img src="jersey.jpg" alt="Barcelona Jersey">
+
+        <h3 style="margin-top:20px;color:#ffcc00;">
+            Blaugrana Forever 🔵🔴
+        </h3>
+
+        <p style="margin-top:10px;color:#bbb;">
+            The iconic blue and garnet colours are part of Barcelona's
+            visual identity and football tradition.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<section>
+
+    <h2 class="title">
+        Club <span>Identity</span>
+    </h2>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>1899</h3>
+            <p>Founded</p>
+        </div>
+
+        <div class="stat">
+            <h3>🔵🔴</h3>
+            <p>Blaugrana</p>
+        </div>
+
+        <div class="stat">
+            <h3>∞</h3>
+            <p>Memories</p>
+        </div>
+
+        <div class="stat">
+            <h3>1</h3>
+            <p>Passion</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL -->
+<section>
+
+    <div class="quote">
+
+        <h2>Més que un club 🔵🔴</h2>
+
+        <p>
+            Football is temporary. Barça's history lives forever.
+        </p>
+
+        <button onclick="showMessage()">
+            VISCA BARÇA ❤️💙
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        Made with ❤️ by <strong>MyBarca</strong>
+    </p>
+
+    <p style="margin-top:10px;">
+        © 2026 MyBarca
+    </p>
+
+</footer>
+
+
+<script>
+
+function showMessage(){
+
+    alert(
+        "VISCA BARÇA! 🔵🔴\n\nMés que un club! ❤️💙"
+    );
+
+}
+
+</script>
 
 </body>
 </html>
